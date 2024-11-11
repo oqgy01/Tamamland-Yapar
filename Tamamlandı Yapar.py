@@ -30,16 +30,11 @@ print("Excelin Adı Tamamlandı Yapılacak Olması Lazım")
 
 
 
-# ChromeDriver'ı en son sürümüyle otomatik olarak indirip kullan
-driver = webdriver.Chrome(ChromeDriverManager().install())
-
-# Giriş yap
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 login_url = "https://task.haydigiy.com/kullanici-giris/?ReturnUrl=%2Fadmin"
 driver.get(login_url)
-
 email_input = driver.find_element("id", "EmailOrPhone")
 email_input.send_keys("mustafa_kod@haydigiy.com")
-
 password_input = driver.find_element("id", "Password")
 password_input.send_keys("123456")
 password_input.send_keys(Keys.RETURN)
